@@ -1,0 +1,26 @@
+{
+  "name": "cathode-webos",
+  "version": "0.1.6",
+  "private": true,
+  "description": "Unofficial webOS homebrew TV shell for Cathode Cinema",
+  "scripts": {
+    "test": "node test/discover.test.js",
+    "check-live": "node scripts/check-live.js",
+    "icons": "python3 scripts/make-icons.py app",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "serve": "python3 -m http.server 8765 --bind 127.0.0.1 --directory dist",
+    "deploy": "ares-install -d ${TV:-tv} dist/*.ipk",
+    "launch": "ares-launch -d ${TV:-tv} com.unofficial.cathodetv",
+    "inspect": "ares-inspect -d ${TV:-tv} --app com.unofficial.cathodetv --open",
+    "test:ca": "sh test/ca/run.sh",
+    "update-ca": "curl -fsSL https://curl.se/ca/cacert.pem -o ca/mozilla-roots.pem && curl -fsSL https://curl.se/ca/cacert.pem.sha256 | awk '{print $1\"  ca/mozilla-roots.pem\"}' | shasum -a 256 -c"
+  },
+  "devDependencies": {
+    "@webosbrew/webos-packager-plugin": "2.0.4",
+    "copy-webpack-plugin": "14.0.0",
+    "webpack": "5.112.2",
+    "webpack-cli": "7.2.3"
+  }
+}

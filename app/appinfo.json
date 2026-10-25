@@ -1,0 +1,14 @@
+{
+  "id": "com.unofficial.cathodetv",
+  "version": "0.1.0",
+  "vendor": "Unofficial",
+  "type": "web",
+  "main": "index.html",
+  "title": "Cathode Cinema",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "bgColor": "#000000",
+  "iconColor": "#000000",
+  "resolution": "1920x1080",
+  "disableBackHistoryAPI": true
+}
