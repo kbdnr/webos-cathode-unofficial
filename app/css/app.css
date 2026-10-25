@@ -1,0 +1,174 @@
+/* Designed for 1920x1080. No CSS variables: webOS 3.x/4.x Chromium predates them. */
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #eee;
+  font-family: "LG Smart UI", "Museo Sans", Helvetica, Arial, sans-serif;
+  font-size: 28px;
+}
+
+#stage { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+
+#player-wrap {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 28%;
+  background: #000;
+}
+#player, #video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+  background: #000;
+}
+#video { display: none; }
+
+#status {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  margin-top: -20px;
+  text-align: center;
+  color: #ff9a1f;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+#status.hidden { display: none; }
+
+#chat-status {
+  position: absolute;
+  top: 40%; left: 0; right: 0;
+  padding: 0 32px;
+  text-align: center;
+  font-size: 24px;
+  color: #ff9a1f;
+  pointer-events: none;
+}
+
+#chat-wrap {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 28%;
+  overflow: hidden;
+  background: #111;
+  border-left: 2px solid #222;
+}
+#chat {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.layout-overlay #player-wrap { right: 0; }
+.layout-overlay #chat-wrap { top: 5%; bottom: 5%; right: 2%; opacity: 0.88; border: 0; border-radius: 12px; }
+.layout-hidden #player-wrap { right: 0; }
+.layout-hidden #chat-wrap { display: none; }  /* stays loaded, so chat history is kept */
+
+#hint {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 18px 40px;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 24px;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+#hint.show { opacity: 1; }
+#hint .k {
+  display: inline-block;
+  min-width: 26px; height: 26px;
+  margin: 0 10px 0 28px;
+  vertical-align: middle;
+  border-radius: 4px;
+  font-size: 18px; line-height: 26px; text-align: center;
+  background: #444;
+}
+#hint .k:first-child { margin-left: 0; }
+#hint .red { background: #d22; }
+#hint .green { background: #2a2; }
+#hint .yellow { background: #db2; }
+#hint .blue { background: #26d; }
+
+#toast {
+  position: absolute;
+  top: 40px; left: 50%;
+  width: 900px; margin-left: -450px;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.92);
+  border-left: 6px solid #ff9a1f;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+#toast.show { opacity: 1; }
+
+#settings {
+  position: absolute;
+  top: 40px; left: 50%;
+  width: 1100px; margin-left: -550px;
+  padding: 32px 48px;
+  background: #151515;
+  border: 2px solid #333;
+  border-radius: 12px;
+  box-shadow: 0 20px 80px #000;
+}
+#settings[hidden] { display: none; }
+#settings h1 { margin: 0 0 20px; font-size: 40px; color: #ff9a1f; }
+#settings label { display: block; margin-bottom: 18px; }
+#settings small { color: #888; font-size: 20px; }
+#settings input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 14px;
+  font-size: 26px;
+  color: #fff;
+  background: #000;
+  border: 2px solid #444;
+  border-radius: 6px;
+}
+#settings .buttons { margin: 20px 0 0; }
+#settings #ca-buttons { margin: 12px 0 16px; }
+#settings #ca-buttons button { font-size: 22px; padding: 8px 20px; }
+#settings button {
+  margin-right: 16px;
+  padding: 12px 28px;
+  font-size: 26px;
+  color: #eee;
+  background: #2a2a2a;
+  border: 2px solid #444;
+  border-radius: 6px;
+}
+#settings input:focus, #settings button:focus {
+  outline: none;
+  border-color: #ff9a1f;
+  background: #3a2a14;
+}
+#set-info {
+  margin: 0;
+  max-height: 260px;
+  overflow: hidden;
+  font-size: 17px;
+  color: #888;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+#probe {
+  position: absolute;
+  left: -10px; top: -10px;
+  width: 1px; height: 1px;
+  border: 0;
+  visibility: hidden;
+}
