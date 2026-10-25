@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cathode Cinema</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="layout-side">
+  <div id="stage">
+    <div id="player-wrap">
+      <iframe id="player" allowfullscreen referrerpolicy="no-referrer"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"></iframe>
+      <video id="video" playsinline></video>
+      <div id="status">Tuning in…</div>
+    </div>
+    <div id="chat-wrap">
+      <iframe id="chat" referrerpolicy="no-referrer"></iframe>
+      <div id="chat-status"></div>
+    </div>
+  </div>
+
+  <div id="hint">
+    <span class="k red"></span>Chat
+    <span class="k green"></span>Reload
+    <span class="k yellow"></span>Side / overlay
+    <span class="k blue"></span>Settings
+    <span class="k">▲▼</span>Scroll chat
+    <span class="k">OK</span>Start / pause
+  </div>
+
+  <div id="toast"></div>
+
+  <form id="settings" hidden>
+    <h1>Settings</h1>
+    <label>Stream override <small>(embed page or .m3u8/.mp4; blank = auto-discover)</small>
+      <input id="set-override" type="text" spellcheck="false" autocomplete="off">
+    </label>
+    <label>Chat nickname
+      <input id="set-nickname" type="text" spellcheck="false" autocomplete="off">
+    </label>
+    <label>Chat width (% of screen, 15–50)
+      <input id="set-width" type="number" min="15" max="50" step="1">
+    </label>
+    <label>Chat text scale (0.75–2)
+      <input id="set-scale" type="number" min="0.75" max="2" step="0.05">
+    </label>
+    <div class="buttons">
+      <button type="submit" id="set-save">Save</button>
+      <button type="button" id="set-rediscover">Clear cache &amp; rediscover</button>
+      <button type="button" id="set-cancel">Cancel</button>
+    </div>
+    <div class="buttons" id="ca-buttons">
+      <button type="button" id="ca-install">Install certificate fix</button>
+      <button type="button" id="ca-uninstall">Remove certificate fix</button>
+      <button type="button" id="ca-restart">Restart web engine</button>
+    </div>
+    <pre id="set-info"></pre>
+  </form>
+
+  <!-- Hidden fallback for discovery when the direct fetch is blocked by CORS. -->
+  <iframe id="probe" tabindex="-1" aria-hidden="true"></iframe>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
