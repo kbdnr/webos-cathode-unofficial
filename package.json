@@ -15,7 +15,8 @@
     "launch": "ares-launch -d ${TV:-tv} com.unofficial.cathodetv",
     "inspect": "ares-inspect -d ${TV:-tv} --app com.unofficial.cathodetv --open",
     "test:ca": "sh test/ca/run.sh",
-    "update-ca": "curl -fsSL https://curl.se/ca/cacert.pem -o ca/mozilla-roots.pem && curl -fsSL https://curl.se/ca/cacert.pem.sha256 | awk '{print $1\"  ca/mozilla-roots.pem\"}' | shasum -a 256 -c"
+    "update-ca": "curl -fsSL https://curl.se/ca/cacert.pem -o ca/mozilla-roots.pem && curl -fsSL https://curl.se/ca/cacert.pem.sha256 | awk '{print $1\"  ca/mozilla-roots.pem\"}' | shasum -a 256 -c",
+    "version": "node -e \"const f='app/appinfo.json',a=require('./'+f);a.version=require('./package.json').version;require('fs').writeFileSync(f,JSON.stringify(a,null,2)+'\\\\n')\" && git add app/appinfo.json"
   },
   "devDependencies": {
     "@webosbrew/webos-packager-plugin": "2.0.4",

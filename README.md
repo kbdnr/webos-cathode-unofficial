@@ -56,7 +56,7 @@ Install `dist/*.ipk` with webOS Dev Manager / Homebrew Manager, or with the webO
 `npm run deploy && npm run launch` (`npm run inspect` for remote DevTools; `TV=<device>` to override).
 
 To release a new version, bump `version` in `package.json` and rebuild (`npm version patch && npm run build`).
-The installer treats a higher version as an update.
+`npm version` also syncs `app/appinfo.json` (via the `version` script). The installer treats a higher version as an update.
 
 `com.unofficial.cathodetv.manifest.json` is the per-app manifest the Homebrew Channel repo format uses
 (with the IPK's sha256). You only need it if you self-host a repo; fill in `iconUrl`/`sourceUrl` in
